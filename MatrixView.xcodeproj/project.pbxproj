@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F33406941B754166002023DE /* MatrixView.m in Sources */ = {isa = PBXBuildFile; fileRef = F33406931B754166002023DE /* MatrixView.m */; };
 		F3C3FAB01B7540710090948E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C3FAAF1B7540710090948E /* main.m */; };
 		F3C3FAB31B7540710090948E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C3FAB21B7540710090948E /* AppDelegate.m */; };
 		F3C3FAB61B7540710090948E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C3FAB51B7540710090948E /* ViewController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F33406921B754166002023DE /* MatrixView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixView.h; sourceTree = "<group>"; };
+		F33406931B754166002023DE /* MatrixView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatrixView.m; sourceTree = "<group>"; };
 		F3C3FAAA1B7540710090948E /* MatrixView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatrixView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C3FAAE1B7540710090948E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3C3FAAF1B7540710090948E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -85,6 +88,8 @@
 				F3C3FAB21B7540710090948E /* AppDelegate.m */,
 				F3C3FAB41B7540710090948E /* ViewController.h */,
 				F3C3FAB51B7540710090948E /* ViewController.m */,
+				F33406921B754166002023DE /* MatrixView.h */,
+				F33406931B754166002023DE /* MatrixView.m */,
 				F3C3FAB71B7540710090948E /* Main.storyboard */,
 				F3C3FABA1B7540710090948E /* Images.xcassets */,
 				F3C3FABC1B7540710090948E /* LaunchScreen.xib */,
@@ -222,6 +227,7 @@
 				F3C3FAB61B7540710090948E /* ViewController.m in Sources */,
 				F3C3FAB31B7540710090948E /* AppDelegate.m in Sources */,
 				F3C3FAB01B7540710090948E /* main.m in Sources */,
+				F33406941B754166002023DE /* MatrixView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +422,7 @@
 				F3C3FACF1B7540710090948E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F3C3FAD01B7540710090948E /* Build configuration list for PBXNativeTarget "MatrixViewTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +431,7 @@
 				F3C3FAD21B7540710090948E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
