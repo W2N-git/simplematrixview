@@ -14,4 +14,10 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable         NSInteger numberOfCoulmns;
 @property (nonatomic, strong) IBInspectable NSString *cellClassName;
 @property (nonatomic, strong) Class cellClass;
+
+@property (nonatomic) BOOL selectionEnabled;
+
+@property (nonatomic, copy) void (^onCellConfigure)(UIView *cell, NSInteger row, NSInteger column);
+@property (nonatomic, copy) void (^onCellSelected) (UIView *cell, NSInteger row, NSInteger column);
+
 @end
