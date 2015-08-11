@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		F33406941B754166002023DE /* MatrixView.m in Sources */ = {isa = PBXBuildFile; fileRef = F33406931B754166002023DE /* MatrixView.m */; };
+		F339A8D01B794C7000F8BB00 /* ToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F339A8CF1B794C7000F8BB00 /* ToggleButton.m */; };
+		F339A8D31B794C7E00F8BB00 /* UIImage+CircleIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = F339A8D21B794C7E00F8BB00 /* UIImage+CircleIcon.m */; };
+		F339A8DA1B794FFC00F8BB00 /* UIView+MatrixCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F339A8D91B794FFC00F8BB00 /* UIView+MatrixCell.m */; };
+		F339A8E01B79528300F8BB00 /* ColorsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F339A8DD1B79528300F8BB00 /* ColorsManager.m */; };
+		F339A8E11B79528300F8BB00 /* IconsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F339A8DF1B79528300F8BB00 /* IconsManager.m */; };
+		F339A8E41B7952E700F8BB00 /* UIColor+HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = F339A8E31B7952E700F8BB00 /* UIColor+HexColors.m */; };
 		F3C3FAB01B7540710090948E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C3FAAF1B7540710090948E /* main.m */; };
 		F3C3FAB31B7540710090948E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C3FAB21B7540710090948E /* AppDelegate.m */; };
 		F3C3FAB61B7540710090948E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C3FAB51B7540710090948E /* ViewController.m */; };
@@ -30,6 +36,20 @@
 /* Begin PBXFileReference section */
 		F33406921B754166002023DE /* MatrixView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixView.h; sourceTree = "<group>"; };
 		F33406931B754166002023DE /* MatrixView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatrixView.m; sourceTree = "<group>"; };
+		F339A8CE1B794C7000F8BB00 /* ToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToggleButton.h; sourceTree = "<group>"; };
+		F339A8CF1B794C7000F8BB00 /* ToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToggleButton.m; sourceTree = "<group>"; };
+		F339A8D11B794C7E00F8BB00 /* UIImage+CircleIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CircleIcon.h"; sourceTree = "<group>"; };
+		F339A8D21B794C7E00F8BB00 /* UIImage+CircleIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CircleIcon.m"; sourceTree = "<group>"; };
+		F339A8D41B794FC600F8BB00 /* MatrixCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatrixCell.h; sourceTree = "<group>"; };
+		F339A8D81B794FFC00F8BB00 /* UIView+MatrixCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MatrixCell.h"; sourceTree = "<group>"; };
+		F339A8D91B794FFC00F8BB00 /* UIView+MatrixCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MatrixCell.m"; sourceTree = "<group>"; };
+		F339A8DB1B79519200F8BB00 /* MatrixViewConfigurator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatrixViewConfigurator.h; sourceTree = "<group>"; };
+		F339A8DC1B79528300F8BB00 /* ColorsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorsManager.h; sourceTree = "<group>"; };
+		F339A8DD1B79528300F8BB00 /* ColorsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorsManager.m; sourceTree = "<group>"; };
+		F339A8DE1B79528300F8BB00 /* IconsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconsManager.h; sourceTree = "<group>"; };
+		F339A8DF1B79528300F8BB00 /* IconsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconsManager.m; sourceTree = "<group>"; };
+		F339A8E21B7952E700F8BB00 /* UIColor+HexColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColors.h"; sourceTree = "<group>"; };
+		F339A8E31B7952E700F8BB00 /* UIColor+HexColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColors.m"; sourceTree = "<group>"; };
 		F3C3FAAA1B7540710090948E /* MatrixView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatrixView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C3FAAE1B7540710090948E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3C3FAAF1B7540710090948E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -63,6 +83,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F339A8E51B795BCB00F8BB00 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				F339A8DC1B79528300F8BB00 /* ColorsManager.h */,
+				F339A8DD1B79528300F8BB00 /* ColorsManager.m */,
+				F339A8E21B7952E700F8BB00 /* UIColor+HexColors.h */,
+				F339A8E31B7952E700F8BB00 /* UIColor+HexColors.m */,
+				F339A8DE1B79528300F8BB00 /* IconsManager.h */,
+				F339A8DF1B79528300F8BB00 /* IconsManager.m */,
+				F339A8D41B794FC600F8BB00 /* MatrixCell.h */,
+				F339A8DB1B79519200F8BB00 /* MatrixViewConfigurator.h */,
+				F339A8D81B794FFC00F8BB00 /* UIView+MatrixCell.h */,
+				F339A8D91B794FFC00F8BB00 /* UIView+MatrixCell.m */,
+				F339A8D11B794C7E00F8BB00 /* UIImage+CircleIcon.h */,
+				F339A8D21B794C7E00F8BB00 /* UIImage+CircleIcon.m */,
+				F339A8CE1B794C7000F8BB00 /* ToggleButton.h */,
+				F339A8CF1B794C7000F8BB00 /* ToggleButton.m */,
+			);
+			name = Others;
+			sourceTree = "<group>";
+		};
 		F3C3FAA11B7540710090948E = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +129,7 @@
 				F3C3FAB21B7540710090948E /* AppDelegate.m */,
 				F3C3FAB41B7540710090948E /* ViewController.h */,
 				F3C3FAB51B7540710090948E /* ViewController.m */,
+				F339A8E51B795BCB00F8BB00 /* Others */,
 				F33406921B754166002023DE /* MatrixView.h */,
 				F33406931B754166002023DE /* MatrixView.m */,
 				F3C3FAB71B7540710090948E /* Main.storyboard */,
@@ -226,8 +268,14 @@
 			files = (
 				F3C3FAB61B7540710090948E /* ViewController.m in Sources */,
 				F3C3FAB31B7540710090948E /* AppDelegate.m in Sources */,
+				F339A8D31B794C7E00F8BB00 /* UIImage+CircleIcon.m in Sources */,
+				F339A8E41B7952E700F8BB00 /* UIColor+HexColors.m in Sources */,
 				F3C3FAB01B7540710090948E /* main.m in Sources */,
+				F339A8DA1B794FFC00F8BB00 /* UIView+MatrixCell.m in Sources */,
 				F33406941B754166002023DE /* MatrixView.m in Sources */,
+				F339A8E11B79528300F8BB00 /* IconsManager.m in Sources */,
+				F339A8D01B794C7000F8BB00 /* ToggleButton.m in Sources */,
+				F339A8E01B79528300F8BB00 /* ColorsManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

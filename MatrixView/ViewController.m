@@ -15,15 +15,23 @@
 
 @implementation ViewController
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+//    NSLog(@"%s, LINE:%d, cells: %@", __PRETTY_FUNCTION__, __LINE__, self.matrixView.subviews);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.matrixView.cellClass = [UIButton class];
+
+//    self.matrixView.cellClass = [UIButton class];
+    
     self.matrixView.onCellConfigure = ^(UIView *cell, NSInteger row, NSInteger column){
         if ((row + column) % 2 == 0) {
             cell.backgroundColor = [UIColor greenColor];
         } else {
             cell.backgroundColor = [UIColor redColor];
         }
+
         if ([cell isKindOfClass:[UIButton class]]) {
             [(UIButton *)cell setTitle:[NSString stringWithFormat:@"%ld - %ld", (long)row, (long)column]
                               forState:UIControlStateNormal];
@@ -32,7 +40,6 @@
     
     self.matrixView.layer.borderWidth = 1.0;
     self.matrixView.layer.cornerRadius = 25.0;
-
 }
 
 - (void)didReceiveMemoryWarning {

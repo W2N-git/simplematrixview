@@ -7,17 +7,45 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MatrixCell.h"
+
+@protocol MatrixViewConfigurator;
 
 IB_DESIGNABLE
 @interface MatrixView : UIView
-@property (nonatomic) IBInspectable         NSInteger numberOfRows;
-@property (nonatomic) IBInspectable         NSInteger numberOfCoulmns;
-@property (nonatomic, strong) IBInspectable NSString *cellClassName;
+
+// Matrix Layout
+@property (nonatomic) IBInspectable NSInteger rowsCount;
+@property (nonatomic) IBInspectable NSInteger columnsCount;
+@property (nonatomic) IBInspectable NSInteger selectedIndex;
+
+
+// Matrix Geometry
+@property (nonatomic) IBInspectable CGFloat cellWidth;
+@property (nonatomic) IBInspectable CGFloat cellHeight;
+
+@property (nonatomic) IBInspectable CGFloat hOffset;
+@property (nonatomic) IBInspectable CGFloat vOffset;
+
+@property (nonatomic) IBInspectable CGFloat hMarginOffset;
+@property (nonatomic) IBInspectable CGFloat vMarginOffset;
+
+@property (nonatomic, strong) IBInspectable NSString  *cellClassName;
 @property (nonatomic, strong) Class cellClass;
 
-@property (nonatomic) BOOL selectionEnabled;
+@property (nonatomic, strong) id<MatrixViewConfigurator> matrixViewConfigurator;
+@property (nonatomic, strong) Class configuratorClass;
 
+
+///  Two properties bellow - to use instead of delegate methods or target/action pattern
 @property (nonatomic, copy) void (^onCellConfigure)(UIView *cell, NSInteger row, NSInteger column);
 @property (nonatomic, copy) void (^onCellSelected) (UIView *cell, NSInteger row, NSInteger column);
+@end
 
+
+@interface MatrixView ()
+- (NSInteger)arrayIndexForRow:(NSInteger)row column:(NSInteger)column;
+- (void)getRow:(NSInteger *)row column:(NSInteger *)column forArrayIndex:(NSInteger)arrayIndex;
+- (NSInteger)columnForArrayIndex:(NSInteger)arrayIndex;
+- (NSInteger)rowForArrayIndex:(NSInteger)arrayIndex;
 @end
