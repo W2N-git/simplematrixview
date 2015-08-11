@@ -12,7 +12,8 @@
 
 @protocol MatrixCell;
 @protocol MatrixViewConfigurator <NSObject>
-- (BOOL)configureCell:(id<MatrixCell>)cell atIndex:(NSInteger)index;
+- (NSInteger)maxNumberOfCells;
+- (void)configureCell:(id<MatrixCell>)cell atIndex:(NSInteger)index;
 @end
 
 #endif

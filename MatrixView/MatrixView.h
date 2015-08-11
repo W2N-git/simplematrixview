@@ -34,12 +34,14 @@ IB_DESIGNABLE
 @property (nonatomic, strong) Class cellClass;
 
 @property (nonatomic, strong) id<MatrixViewConfigurator> matrixViewConfigurator;
-@property (nonatomic, strong) Class configuratorClass;
+@property (nonatomic, strong) IBInspectable NSString *configuratorClassName;
 
 
-///  Two properties bellow - to use instead of delegate methods or target/action pattern
-@property (nonatomic, copy) void (^onCellConfigure)(UIView *cell, NSInteger row, NSInteger column);
-@property (nonatomic, copy) void (^onCellSelected) (UIView *cell, NSInteger row, NSInteger column);
+///  Two properties bellow - to use instead of delegate pattern or target/action pattern
+@property (nonatomic, copy) BOOL (^onShouldConfigureCellAtIndex)(NSInteger index);
+@property (nonatomic, copy) void (^onCellConfigure)(UIView *cell, NSInteger index);
+@property (nonatomic, copy) void (^onCellSelectedConfigure)(UIView *cell, NSInteger index);
+@property (nonatomic, copy) void (^onCellSelected) (UIView *cell, NSInteger index);
 @end
 
 

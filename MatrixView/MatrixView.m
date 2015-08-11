@@ -7,6 +7,7 @@
 //
 
 #import "MatrixView.h"
+#import "MatrixViewConfigurator.h"
 
 #define ROW_MULTIPLIER 1000
 #define CELL_TAG_SHIFT 345
@@ -41,7 +42,7 @@
     }
 }
 
-#pragma mark - Properties
+#pragma mark - Public Properties
 
 - (void)setCellClassName:(NSString *)cellClassName {
     _cellClassName = cellClassName;
@@ -78,6 +79,32 @@
     _selectedIndex   = selectedIndex;
     if (oldValue != selectedIndex) {
         self.selectedCellIndexChanged = YES;
+    }
+}
+
+- (void)setMatrixViewConfigurator:(id<MatrixViewConfigurator>)matrixViewConfigurator {
+    id oldValue = self.matrixViewConfigurator;
+    _matrixViewConfigurator = matrixViewConfigurator;
+    if (matrixViewConfigurator != oldValue) {
+        self.onShouldConfigureCellAtIndex = ^BOOL(NSInteger index){
+            return matrixViewConfigurator.maxNumberOfCells > index;
+        };
+        self.onCellConfigure = ^(UIView *cell, NSInteger index) {
+            [matrixViewConfigurator configureCell:(id<MatrixCell>)cell atIndex:index];
+        };
+        self.cellsNeedToBeUpdated = YES;
+    }
+}
+
+- (void)setConfiguratorClassName:(NSString *)configuratorClassName {
+    
+    Class class = NSClassFromString(configuratorClassName);
+    
+    if (class != NULL) {
+        id<MatrixViewConfigurator> configurator = [[class alloc] init];
+        if ([configurator conformsToProtocol:@protocol(MatrixViewConfigurator)]) {
+            self.matrixViewConfigurator = configurator;
+        }
     }
 }
 
@@ -165,11 +192,20 @@
 }
 
 - (void)configureCell:(UIView *)cell atRow:(NSInteger)row column:(NSInteger)column {
-    //TODO: Implement this method (maybe use delegate or closure)
-//    cell.hidden = YES;
+
+    NSInteger index = [self arrayIndexForRow:row column:column];
+    
+    if (self.onShouldConfigureCellAtIndex) {
+        if (self.onShouldConfigureCellAtIndex(index)) {
+            cell.hidden = NO;
+        } else {
+            cell.hidden = YES;
+        }
+    }
+    
     cell.tag = [self tagForCellAtRow:row column:column];
     if (self.onCellConfigure){
-        self.onCellConfigure(cell, row, column);
+        self.onCellConfigure(cell, index);
     }
 }
 
@@ -212,8 +248,8 @@
 - (void)getRow:(NSInteger *)row column:(NSInteger *)column forCellTag:(NSInteger)tag {
 
     NSInteger realTag = tag - CELL_TAG_SHIFT;
-    *row              = realTag/ROW_MULTIPLIER;
-    *column           = realTag%ROW_MULTIPLIER;
+    *row    = realTag/ROW_MULTIPLIER;
+    *column = realTag%ROW_MULTIPLIER;
 }
 
 #pragma mark - actions
@@ -238,34 +274,35 @@
         [self configureCellAsSelected:cell row:row column:column];
         
         if (self.onCellSelected){
-            self.onCellSelected(cell, row, column);
+            self.onCellSelected(cell, selectedIndex);
         }
     }
 }
 
 - (void)configureCellAsSelected:(UIView *)cell row:(NSInteger)row column:(NSInteger)column {
     
-    NSLog(@"%s, LINE:%d, cell: %@", __PRETTY_FUNCTION__, __LINE__, cell);
-
+    NSInteger index = [self arrayIndexForRow:row column:column];
     
     if ([cell conformsToProtocol:@protocol(MatrixCell)]) {
         
         UIView <MatrixCell> *newCell = (UIView <MatrixCell> *)cell;
         UIView <MatrixCell> *oldCell = (UIView <MatrixCell> *)self.selectedCell;
         
-        if (newCell != oldCell) {
-            
-            NSInteger selectedIndex = [self arrayIndexForRow:row column:column];
-            
-            oldCell.selected = NO;
-            newCell.selected = YES;
-            
-//            newCell.backgroundColor = [UIColor blueColor];
-            
-            self.selectedCell  = cell;
-            self.selectedIndex = selectedIndex;
-        }
+        oldCell.selected = NO;
+        newCell.selected = YES;
+    
+        self.selectedIndex = index;
+
+    } else {
+
+        if (self.onCellConfigure)
+            self.onCellConfigure(cell, index);
+        
+        if (self.onCellSelectedConfigure)
+            self.onCellSelectedConfigure(cell, index);
     }
+    
+    self.selectedCell  = cell;
 }
 
 @end
@@ -274,22 +311,6 @@
 @implementation MatrixView (some_ext)
 
 - (void)prepareForInterfaceBuilder {
-    
-//    if (self.cellClass == nil)
-  //      self.cellClass = UIButton.class;
-    
-    self.onCellConfigure = ^(UIView *cell, NSInteger row, NSInteger column){
-        if ((row + column) % 2 == 0) {
-            cell.backgroundColor = [UIColor greenColor];
-        } else {
-            cell.backgroundColor = [UIColor redColor];
-        }
-        
-        if ([cell isKindOfClass:[UIButton class]]) {
-            [(UIButton *)cell setTitle:[NSString stringWithFormat:@"%ld - %ld", (long)row, (long)column]
-                              forState:UIControlStateNormal];
-        }
-    };
 }
 
 @end
@@ -354,7 +375,7 @@
 }
 
 - (void)setHorizontalConstraintsFromCellToLeftBorder:(UIView *)cell {
-    //TODO: C to left
+    //C to left
     NSLayoutConstraint *horizontalBorderPaddingC = [NSLayoutConstraint constraintWithItem:cell
                                                                                 attribute:NSLayoutAttributeLeft
                                                                                 relatedBy:NSLayoutRelationEqual
@@ -368,7 +389,7 @@
 
 - (void)pinHorizontallyCell:(UIView *)rightCell toCell:(UIView *)leftCell {
 
-    //TODO: C to cell at left
+    //C to cell at left
     
     CGFloat padding = 0.0;
     
@@ -392,7 +413,7 @@
 
     [self.horizontalPaddingsConstraints addObject:horizontalPaddingC];
     
-    //TODO: C for Width
+    //C for Width
     NSLayoutConstraint *equalWidthsC =[NSLayoutConstraint constraintWithItem:rightCell
                                                                    attribute:NSLayoutAttributeWidth
                                                                    relatedBy:NSLayoutRelationEqual
@@ -405,7 +426,8 @@
 }
 
 - (void)setHorizontalConstraintsFromCellToRightBorder:(UIView *)cell {
-    //TODO: C to right
+    
+    //C to right
     NSLayoutConstraint *horizontalBorderPaddingC =[NSLayoutConstraint constraintWithItem:self
                                                                                attribute:NSLayoutAttributeRight
                                                                                relatedBy:NSLayoutRelationEqual
@@ -424,7 +446,7 @@
         [self setVerticalConstraintsFromCellToTopBorder:cell];
         
     } else {
-        //TODO: C to cell at top
+        //C to cell at top
         UIView *cellAtTop = [self cellAtRow:row - 1 column:column];
         if (cellAtTop.superview == nil) {
             abort();
@@ -439,7 +461,7 @@
 }
 
 - (void)setVerticalConstraintsFromCellToTopBorder:(UIView *)cell {
-    //TODO: c to top
+    //C to top
     NSLayoutConstraint *verticalBorderPaddingC = [NSLayoutConstraint constraintWithItem:cell
                                                                               attribute:NSLayoutAttributeTop
                                                                               relatedBy:NSLayoutRelationEqual
@@ -471,7 +493,7 @@
                                                                        multiplier:1.0
                                                                          constant:padding];
     verticalPaddingC.priority = 999;
-    //TODO: C for Height
+    //C for Height
     NSLayoutConstraint *equalHeightsC = [NSLayoutConstraint constraintWithItem:bottomCell
                                                                      attribute:NSLayoutAttributeHeight
                                                                      relatedBy:NSLayoutRelationEqual
@@ -485,7 +507,7 @@
 }
 
 - (void)setVerticalConstraintsFromCellToBottomBorder:(UIView *)cell {
-    //TODO: c to bottom
+    //C to bottom
     NSLayoutConstraint *verticalBorderPaddingC = [NSLayoutConstraint constraintWithItem:self
                                                                               attribute:NSLayoutAttributeBottom
                                                                               relatedBy:NSLayoutRelationEqual

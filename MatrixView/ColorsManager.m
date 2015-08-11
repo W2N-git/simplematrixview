@@ -41,6 +41,10 @@
     return self;
 }
 
+- (NSInteger)maxNumberOfCells {
+    return _colors.count;
+}
+
 - (NSInteger)numberOfColors {
     return _colors.count;
 }
@@ -59,12 +63,10 @@
     return _colors[index];
 }
 
-- (BOOL)configureCell:(id<MatrixCell>)cell atIndex:(NSInteger)index {
+- (void)configureCell:(id<MatrixCell>)cell atIndex:(NSInteger)index {
     if (index < _colors.count) {
         cell.color = [UIColor colorWithHexString:_colors[index]];
-        return YES;
     }
-    return NO;
 }
 
 @end

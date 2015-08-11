@@ -11,6 +11,9 @@
 #define DEFAULT_NUMBER_OF_ICONS 12
 
 @implementation IconsManager
+- (NSInteger)maxNumberOfCells {
+    return DEFAULT_NUMBER_OF_ICONS;
+}
 
 - (NSInteger)numberOfIcons {
     return DEFAULT_NUMBER_OF_ICONS;
@@ -30,14 +33,14 @@
     return -1;
 }
 
-//
-- (BOOL)configureCell:(id<MatrixCell>)cell atIndex:(NSInteger)index {
+
+- (void)configureCell:(id<MatrixCell>)cell atIndex:(NSInteger)index {
     if (index < self.numberOfIcons) {
         NSString *icon = [self iconNameAtIndex:index];
-        cell.image     = [UIImage imageNamed:icon];
-        return YES;
+        cell.image     = [UIImage imageNamed:icon
+                                    inBundle:[NSBundle bundleForClass:[self class]]
+               compatibleWithTraitCollection:nil];
     }
-    return NO;
 }
 
 @end
