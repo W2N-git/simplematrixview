@@ -273,9 +273,10 @@
         
         [self configureCellAsSelected:cell row:row column:column];
         
-        if (self.onCellSelected){
-            self.onCellSelected(cell, selectedIndex);
-        }
+//        if (self.onCellSelected){
+//            self.onCellSelected(cell, selectedIndex);
+//        }
+        [self sendActionsForControlEvents:UIControlEventValueChanged];
     }
 }
 

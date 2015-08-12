@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>BB230730-B2AE-499C-9628-0D8D055DC473</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>MatrixView</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>DD5D394BC1093CDD8D3A5CFCDFCD09FD95C48E90</key>
 		<string>https://github.com/W2N-git/simplematrixview.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MatrixView.xcodeproj/project.xcworkspace</string>
+	<string>MatrixView.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>DD5D394BC1093CDD8D3A5CFCDFCD09FD95C48E90</key>

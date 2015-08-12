@@ -12,7 +12,7 @@
 @protocol MatrixViewConfigurator;
 
 IB_DESIGNABLE
-@interface MatrixView : UIView
+@interface MatrixView : UIControl
 
 // Matrix Layout
 @property (nonatomic) IBInspectable NSInteger rowsCount;
@@ -41,7 +41,7 @@ IB_DESIGNABLE
 @property (nonatomic, copy) BOOL (^onShouldConfigureCellAtIndex)(NSInteger index);
 @property (nonatomic, copy) void (^onCellConfigure)(UIView *cell, NSInteger index);
 @property (nonatomic, copy) void (^onCellSelectedConfigure)(UIView *cell, NSInteger index);
-@property (nonatomic, copy) void (^onCellSelected) (UIView *cell, NSInteger index);
+//@property (nonatomic, copy) void (^onCellSelected) (UIView *cell, NSInteger index);
 @end
 
 
